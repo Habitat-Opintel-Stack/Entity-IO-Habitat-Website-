@@ -97,7 +97,7 @@ const HUB_HOME = { c: 4, r: 7 };
 const HUB_DEST = { c: 3, r: 11 };
 type Seat = { c: number; r: number };
 function isHub(col: number, row: number, hop = HUB_HOME) {
-  return (col === 3 && row === 1) || (col === hop.c && row === hop.r);
+  return (hop.r >= 3 && col === 3 && row === 1) || (col === hop.c && row === hop.r);
 }
 function isInkMark(col: number, row: number, at: Seat | null) {
   return !!at && col === at.c && row === at.r;
@@ -151,26 +151,6 @@ function pathHit(col: number, row: number, path: PathAt[] | null) {
 
 function mileHit(col: number, row: number) {
   return MILESTONES.find((item) => item.col === col && item.row === row) ?? null;
-}
-
-function CriticalPathHint() {
-  return (
-    <span className="range-gate-hint" aria-hidden="true">
-      <span className="range-gate-go">
-        <svg className="range-gate-bolt" viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M13.6 2.4 L6.2 13.2 H12.1 L10.4 21.6 L17.9 10.5 H12 Z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.55"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Critical Path
-      </span>
-    </span>
-  );
 }
 
 function tileRise(col: number, row: number) {
@@ -293,6 +273,27 @@ export function EntityField({
   const park = hubSeat ?? HUB_DEST;
   const [hubAt, setHubAt] = useState(hubStart ?? (pageLock != null && pageLock >= 2 ? park : HUB_HOME));
   const [hubTrail, setHubTrail] = useState<number[]>([]);
+  useEffect(() => {
+    if (page !== 0 || pageLock != null || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const home = { c: 3, r: 1 };
+    const positions = [{ c: 0, r: 0 }, { c: 6, r: 0 }, { c: 0, r: 2 }, { c: 6, r: 2 }, { c: 1, r: 1 }, { c: 5, r: 1 }, { c: 2, r: 0 }, { c: 4, r: 2 }];
+    let index = 0;
+    const shuffle = () => {
+      const shuffled = [...positions];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return [...shuffled.slice(0, 4), home];
+    };
+    let order = shuffle();
+    const timer = window.setInterval(() => {
+      setHubAt(order[index]);
+      index++;
+      if (index === order.length) { order = shuffle(); index = 0; }
+    }, 10000);
+    return () => window.clearInterval(timer);
+  }, [page, pageLock]);
   const [inkShow, setInkShow] = useState(false);
   const [inkAt, setInkAt] = useState<Seat | null>(null);
   const [boardFlip, setBoardFlip] = useState<string[]>([]);
@@ -844,7 +845,8 @@ export function FieldTiles({
   const hubOnCarousel = Boolean(carouselSeat && hubAt.c === carouselSeat.c && hubAt.r === carouselSeat.r);
   const boardOut = docked || hubOnCarousel;
   const showPads = !carouselSeat || hubOnCarousel;
-  const charged = Boolean(carouselSeat && !hubWalk && !recalling && (!docked || hubOnCarousel));
+  const homeCharge = className === "feat-grid" && page === 0;
+  const charged = homeCharge || Boolean(carouselSeat && !hubWalk && !recalling && (!docked || hubOnCarousel));
   const [flash, setFlash] = useState(false);
   const chargeRef = useRef<HTMLButtonElement | null>(null);
   const floodRef = useRef(false);
@@ -981,8 +983,8 @@ export function FieldTiles({
     const born = performance.now();
     let raf = 0;
     const frame = (now: number) => {
-      const t = Math.min(1, (now - born) / 15000);
-      el.style.setProperty("--charge", (t * t).toFixed(4));
+      const t = Math.min(1, (now - born) / (homeCharge ? 10000 : 15000));
+      el.style.setProperty("--charge", (homeCharge ? t * t * t : t * t).toFixed(4));
       if (t < 1) raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
@@ -990,15 +992,25 @@ export function FieldTiles({
       cancelAnimationFrame(raf);
       el.style.setProperty("--charge", "0");
     };
-  }, [charged]);
+  }, [charged, homeCharge, hubAt]);
   useEffect(() => {
     if (!charged || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setFlash(false);
       return;
     }
+    if (homeCharge) {
+      setFlash(false);
+      return;
+    }
     let cancel = false;
     let timer = 0;
+    const born = performance.now();
+    setFlash(false);
     const beat = () => {
+      if (homeCharge && performance.now() - born >= 6000) {
+        setFlash(true);
+        return;
+      }
       const hold = 28 + Math.random() * 36;
       setFlash(true);
       timer = window.setTimeout(() => {
@@ -1023,14 +1035,14 @@ export function FieldTiles({
       timer = window.setTimeout(() => {
         if (cancel) return;
         beat();
-      }, 1400 + Math.random() * 2600);
+      }, homeCharge ? 400 + Math.random() * 500 : 1400 + Math.random() * 2600);
     };
     wait();
     return () => {
       cancel = true;
       window.clearTimeout(timer);
     };
-  }, [charged]);
+  }, [charged, homeCharge, hubAt]);
   const aimInk = (event: { button: number; preventDefault: () => void; stopPropagation: () => void }, col: number, row: number) => {
     if (!boardOn || page < 2 || event.button !== 0) return false;
     if (carouselSeat && (rangeRead !== "habitat" || !hubReady)) return false;
@@ -1178,7 +1190,6 @@ export function FieldTiles({
                 {overInk ? <EpicMark ink /> : null}
                 <EpicMark />
               </button>
-              {carouselSeat ? null : charged ? <CriticalPathHint /> : null}
             </span>
           );
         }
@@ -1388,19 +1399,6 @@ export function FieldTiles({
           </button>
         );
       })}
-      {carouselSeat && hubStart && rangeRead === "habitat" && Number.isFinite(minRow) ? (
-        <span
-          className="range-gate"
-          style={{
-            gridColumn: hubStart.c + 1,
-            gridRow: hubStart.r - minRow + 1,
-            pointerEvents: "none",
-          }}
-          aria-hidden="true"
-        >
-          <CriticalPathHint />
-        </span>
-      ) : null}
       {showPads
         ? Array.from({ length: Math.max(0, padCols - 7) * padRows }, (_, index) => {
             const extra = Math.floor(index / Math.max(padRows, 1));

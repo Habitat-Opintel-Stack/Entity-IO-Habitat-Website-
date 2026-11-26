@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { HabitatFilm } from "@/components/habitat-film";
 import { useState } from "react";
 import { range, rangeNumerals } from "@/content/copy";
 import { PlaceToggle } from "@/components/place";
-import { TimeRead } from "@/components/time-read";
 import { EntityField, FieldTiles, usePadCols } from "@/components/entity-field";
 import type { RangeRead } from "@/components/range-carousel";
 
@@ -16,23 +16,6 @@ const PLOT_CAROUSEL = { c: 6, r: 11 };
 const PLOT_CAROUSEL_WIDE = { c: 7, r: 11 };
 const PLOT_GATE = { c: 0, r: 12 };
 const PLOT_KEEP = ["0,12"];
-
-function HabitatMark() {
-  return (
-    <svg className="head-mark" viewBox="0 0 64 64" aria-hidden="true">
-      <g transform="translate(-3.5 0)">
-        <path className="feat-epic-shade" d="M27 11 L13 22 L13 42 L27 53" transform="translate(-0.7 -0.9)" />
-        <path className="feat-epic-lit" d="M27 11 L13 22 L13 42 L27 53" transform="translate(0.8 1)" />
-        <path className="feat-epic-face" d="M27 11 L13 22 L13 42 L27 53" />
-      </g>
-      <g transform="translate(3.5 0)">
-        <path className="feat-epic-shade" d="M37 11 L51 22 L51 42 L37 53" transform="translate(-0.7 -0.9)" />
-        <path className="feat-epic-lit" d="M37 11 L51 22 L51 42 L37 53" transform="translate(0.8 1)" />
-        <path className="feat-epic-face" d="M37 11 L51 22 L51 42 L37 53" />
-      </g>
-    </svg>
-  );
-}
 
 function viewNumeral(view: (typeof range.habitat) | (typeof range.engineering) | (typeof range.views)[number]) {
   if (!("code" in view)) return null;
@@ -63,14 +46,8 @@ export function ProductRange() {
         <header className="land-head">
           <div className="head-bar">
             <div className="head-ident">
-              <Link href="/" className="head-mark-hit" aria-label="Habitat">
-                <HabitatMark />
-              </Link>
-              <span className="head-sep" aria-hidden="true" />
-              <TimeRead />
-              <span className="head-sep" aria-hidden="true" />
               <Link href="/" className="head-brand">
-                ENTITY IO
+                Entity Io<span className="head-brand-divider" aria-hidden="true">\</span><span className="head-brand-extension">Operational Intelligence</span>
               </Link>
             </div>
             <nav className="head-rail">
@@ -78,9 +55,9 @@ export function ProductRange() {
                 {range.enroll}
               </Link>
               <span className="head-sep" aria-hidden="true" />
-              <Link href="/product" className="head-link">
+              <HabitatFilm className="head-link">
                 {range.explore}
-              </Link>
+              </HabitatFilm>
               <span className="head-sep" aria-hidden="true" />
               <PlaceToggle />
             </nav>

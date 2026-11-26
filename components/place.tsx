@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const places = [
   { id: "sydney", label: "Sydney", zone: "Australia/Sydney" },
@@ -81,63 +81,15 @@ export function usePlace() {
 }
 
 export function PlaceToggle() {
-  const { place, setPlace } = usePlace();
-  const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onPointer = (event: PointerEvent) => {
-      if (rootRef.current?.contains(event.target as Node)) return;
-      setOpen(false);
-    };
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("pointerdown", onPointer);
-    window.addEventListener("keydown", onKey);
-    return () => {
-      window.removeEventListener("pointerdown", onPointer);
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  const current = places.find((item) => item.id === place)?.label ?? places[0].label;
-
   return (
-    <div className="head-place" ref={rootRef} data-open={open ? "" : undefined}>
-      <button
-        type="button"
-        className="head-globe"
-        aria-expanded={open}
-        aria-label={`Location: ${current}`}
-        title={`Location: ${current}`}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-          <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" strokeWidth="1" />
-          <ellipse cx="8" cy="8" rx="2.4" ry="6.25" fill="none" stroke="currentColor" strokeWidth="1" />
-          <path d="M1.75 8h12.5M3.1 5h9.8M3.1 11h9.8" fill="none" stroke="currentColor" strokeWidth="1" />
-        </svg>
-      </button>
-      {open ? (
-        <div className="head-place-list">
-          {places.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className="head-link"
-              aria-current={item.id === place ? "true" : undefined}
-              onClick={() => {
-                setPlace(item.id);
-                setOpen(false);
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      ) : null}
-    </div>
+    <span className="head-globe head-stack" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <g fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3.5 7.5 12 3l8.5 4.5L12 12z" />
+          <path d="M3.5 11.2 12 15.7l8.5-4.5" />
+          <path d="M3.5 15 12 19.5l8.5-4.5" />
+        </g>
+      </svg>
+    </span>
   );
 }

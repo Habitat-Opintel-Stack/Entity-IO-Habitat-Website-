@@ -1,11 +1,11 @@
 export const story = {
   hero: "N–Gen Enterprise Assets",
-  join: "Join Entity IO at the vanguard",
+  join: "Join us on the frontline",
   core: "Explore Habitat 1: Genesis",
   heroAside: "Enhanced Digital Twins",
   problem: [
-    "When the components of your business fall out of rhythm, you lose time – similar to a clock.",
-    "We are developing a product line that holds them in rhythm, enabling your operation to run like clockwork.",
+    "When the components of your business fall out of rhythm, you lose time.",
+    "Habitat connects your people, processes and resources, enabling you to predict disruptions, coordinate operations and keep your business on target.",
     "Harness time and unlock enterprise performance with the next generation of command environment.",
   ],
   native: ["Native system capabilities include:"],
@@ -54,14 +54,14 @@ export const heroFlip = [
   "Unlock Performance",
 ] as const;
 
-export const plotHero = "Predict The Future";
+export const plotHero = "Enterprise Intelligence";
 
 export const plotFlip = [
-  "Critical Pathways",
-  "Decision Windows",
-  "Opportunity Windows",
-  "Ideal Enterprise States",
-  "Emerging Threats",
+  "Predict Disruption",
+  "Optimise Resources",
+  "Orchestrate Operations",
+  "Model Futures",
+  "Achieve Targets",
 ] as const;
 
 export const rangeNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"] as const;

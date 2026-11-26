@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { HabitatFilm } from "@/components/habitat-film";
 import { usePathname } from "next/navigation";
 import { PlaceToggle } from "@/components/place";
 
@@ -15,9 +16,9 @@ export function SiteHeader() {
           Kinetic Information Technology<span className="head-brand-slash">/</span>KIT
         </Link>
         <nav className="head-rail">
-          <Link href="/product" className="head-link">
+          <HabitatFilm className="head-link">
             Explore Habitat 1: Genesis
-          </Link>
+          </HabitatFilm>
           <span className="head-sep" aria-hidden="true" />
           <Link href="/?enroll=1" className="head-link">
             Pilot Product
