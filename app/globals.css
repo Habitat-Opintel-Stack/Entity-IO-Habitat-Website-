@@ -3157,6 +3157,11 @@ html:not([data-theme="light"]) .land-ask-row > input {
   color: #6226ff;
 }
 
+.land-ask-opt[data-on] {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
 html:not([data-theme="light"]) .land-ask-opt {
   color: color-mix(in srgb, #fff 62%, transparent);
 }

@@ -104,6 +104,7 @@ export function WaitlistForm({ tone = "paper" }: { tone?: "paper" | "field" }) {
                   type="button"
                   className="land-ask-opt"
                   data-on={seat === path.value ? "1" : undefined}
+                  aria-pressed={seat === path.value}
                   onClick={() => setSeat(path.value)}
                 >
                   {path.label}
