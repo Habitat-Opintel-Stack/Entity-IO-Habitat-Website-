@@ -422,6 +422,16 @@ export function Landing() {
       <div className="land-hint">
         <button
           type="button"
+          className="land-flick land-flick-prev"
+          aria-label="Previous page"
+          onClick={() => goRef.current(Number(rootRef.current?.dataset.page ?? 0) - 1)}
+        >
+          <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+            <path d="M2 8l4-4 4 4" fill="none" stroke="currentColor" strokeWidth="0.85" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+        <button
+          type="button"
           className="land-flick"
           aria-label="Next page"
           onClick={() => goRef.current(Number(rootRef.current?.dataset.page ?? 0) + 1)}

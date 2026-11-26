@@ -3718,11 +3718,23 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
   color: #6226ff;
 }
 
-.land-hint.is-off,
-.land-site[data-page="3"] .land-hint {
+.land-hint.is-off {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.land-site[data-page="0"] .land-flick-prev,
+.land-site[data-page="3"] .land-hint .land-flick:not(.land-flick-prev),
+.land-site[data-page="3"] .land-hint .land-next {
+  display: none;
+}
+
+.land-flick-prev {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .land-flick {
