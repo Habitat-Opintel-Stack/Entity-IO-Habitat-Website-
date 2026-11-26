@@ -5134,10 +5134,7 @@ html[data-theme="light"] .kit-sys-reading:hover span {
 .land-opening-dash { margin: 0 0.35em; }
 /* Shimmer position is gently varied by the homepage component. */
 .land-opening-line { animation: none; }
-/* Clear the text area and align the Predict line with the page control. */
-.land-site:not(.range-page) .land-plot-hold .feat-tile[data-at="0,12"],
-.land-site:not(.range-page) .land-plot-hold .feat-tile[data-at="1,12"],
-.land-site:not(.range-page) .land-plot-hold .feat-tile[data-at="2,12"] { visibility: hidden; pointer-events: none; }
+/* Align the Enterprise Intelligence line with the page control. */
 .land-site:not(.range-page) .land-plot-stage .land-hero-hold {
   top: calc(var(--board-y0) + 3 * var(--feat-pitch) + var(--feat-tile) / 2);
   bottom: auto;
