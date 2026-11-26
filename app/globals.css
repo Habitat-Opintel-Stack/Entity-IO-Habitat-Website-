@@ -3732,7 +3732,8 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 
 .land-site[data-page="0"] .land-flick-prev,
 .land-site[data-page="3"] .land-hint .land-flick:not(.land-flick-prev) {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .land-flick-prev {
@@ -3744,7 +3745,6 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 
 .land-hint > .land-flick:not(.land-flick-prev) { transform: translate(-4mm, calc(0.7em + 1mm)); }
 .land-site[data-page="0"] .land-hint > .land-flick:not(.land-flick-prev) { transform: translateX(-4mm); }
-.land-site[data-page="3"] .land-flick-prev { top: 50%; transform: translateY(-50%); }
 
 .land-flick {
   display: flex;
