@@ -97,13 +97,15 @@ const HUB_HOME = { c: 4, r: 7 };
 const HUB_DEST = { c: 3, r: 11 };
 type Seat = { c: number; r: number };
 function isHub(col: number, row: number, hop = HUB_HOME) {
-  return (hop.r >= 3 && col === 3 && row === 1) || (col === hop.c && row === hop.r);
+  return col === hop.c && row === hop.r;
 }
 function isInkMark(col: number, row: number, at: Seat | null) {
   return !!at && col === at.c && row === at.r;
 }
 function hubGoal(page: number, inkAt: Seat | null, dest = HUB_DEST): Seat {
-  if (page < 2) return HUB_HOME;
+  if (page === 0) return { c: 3, r: 1 };
+  if (page === 1) return HUB_HOME;
+  if (page === 3) return { c: 4, r: 16 };
   if (inkAt) return inkAt;
   return dest;
 }
@@ -271,7 +273,7 @@ export function EntityField({
   const [mileShow, setMileShow] = useState<string[]>([]);
   const [webOn, setWebOn] = useState(false);
   const park = hubSeat ?? HUB_DEST;
-  const [hubAt, setHubAt] = useState(hubStart ?? (pageLock != null && pageLock >= 2 ? park : HUB_HOME));
+  const [hubAt, setHubAt] = useState(hubStart ?? (pageLock != null && pageLock >= 2 ? park : { c: 3, r: 1 }));
   const [hubTrail, setHubTrail] = useState<number[]>([]);
   useEffect(() => {
     if (page !== 0 || pageLock != null || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -287,12 +289,31 @@ export function EntityField({
       return [...shuffled.slice(0, 4), home];
     };
     let order = shuffle();
-    const timer = window.setInterval(() => {
+    let timer = 0;
+    let burstRemaining = 0;
+    let slowMovesSinceBurst = 0;
+    const slowDelay = () => 10000 + Math.random() * 10000;
+    const quickDelay = () => 650 + Math.random() * 1050;
+    const move = () => {
       setHubAt(order[index]);
       index++;
       if (index === order.length) { order = shuffle(); index = 0; }
-    }, 10000);
-    return () => window.clearInterval(timer);
+      if (burstRemaining > 0) {
+        burstRemaining--;
+        timer = window.setTimeout(move, burstRemaining > 0 ? quickDelay() : slowDelay());
+        return;
+      }
+      slowMovesSinceBurst++;
+      if (slowMovesSinceBurst >= 2 && Math.random() < 0.3) {
+        burstRemaining = 3 + Math.floor(Math.random() * 3);
+        slowMovesSinceBurst = 0;
+        timer = window.setTimeout(move, quickDelay());
+      } else {
+        timer = window.setTimeout(move, slowDelay());
+      }
+    };
+    timer = window.setTimeout(move, slowDelay());
+    return () => window.clearTimeout(timer);
   }, [page, pageLock]);
   const [inkShow, setInkShow] = useState(false);
   const [inkAt, setInkAt] = useState<Seat | null>(null);
