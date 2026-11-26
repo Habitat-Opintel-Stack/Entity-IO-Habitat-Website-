@@ -321,7 +321,7 @@ export function Landing() {
     const paint = (page: number) => {
       const at = Math.max(0, Math.min(LAST, page));
       root.dataset.page = String(at);
-      nextNum.textContent = String(Math.min(at + 2, LAST + 1)).padStart(2, "0");
+      nextNum.textContent = String(at + 1).padStart(2, "0");
       if (live) {
         live.textContent = at === LAST ? story.join : at === 2 ? plotHero : story.hero;
       }
@@ -447,13 +447,7 @@ export function Landing() {
             </svg>
           </span>
         </button>
-        <button
-          type="button"
-          className="land-next"
-          onClick={() => goRef.current(Number(rootRef.current?.dataset.page ?? 0) + 1)}
-        >
-          02
-        </button>
+        <span className="land-next" aria-label="Current page">01</span>
       </div>
     </div>
     </EntityField>

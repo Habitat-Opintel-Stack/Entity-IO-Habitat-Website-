@@ -3731,8 +3731,7 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 }
 
 .land-site[data-page="0"] .land-flick-prev,
-.land-site[data-page="3"] .land-hint .land-flick:not(.land-flick-prev),
-.land-site[data-page="3"] .land-hint .land-next {
+.land-site[data-page="3"] .land-hint .land-flick:not(.land-flick-prev) {
   display: none;
 }
 
@@ -3745,7 +3744,7 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 
 .land-hint > .land-flick:not(.land-flick-prev) { transform: translate(-4mm, calc(0.7em + 1mm)); }
 .land-site[data-page="0"] .land-hint > .land-flick:not(.land-flick-prev) { transform: translateX(-4mm); }
-.land-site[data-page="3"] .land-flick-prev { top: 50%; transform: translate(-50%, -50%); }
+.land-site[data-page="3"] .land-flick-prev { top: 50%; transform: translateY(-50%); }
 
 .land-flick {
   display: flex;
@@ -3795,13 +3794,8 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
   letter-spacing: 0.14em;
   line-height: 1;
   font-synthesis: none;
-  cursor: pointer;
+  cursor: default;
   transition: color 0.22s ease;
-}
-
-.land-next:hover {
-  color: #111111;
-  opacity: 1;
 }
 
 @keyframes land-flick {
