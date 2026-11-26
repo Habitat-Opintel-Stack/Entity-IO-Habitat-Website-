@@ -3738,13 +3738,13 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 
 .land-flick-prev {
   position: absolute;
-  left: -2mm;
+  left: -4mm;
   top: calc(50% - 0.7em - 1mm);
   transform: translateY(-50%);
 }
 
-.land-hint > .land-flick:not(.land-flick-prev) { transform: translate(-2mm, calc(0.7em + 1mm)); }
-.land-site[data-page="0"] .land-hint > .land-flick:not(.land-flick-prev) { transform: translateX(-2mm); }
+.land-hint > .land-flick:not(.land-flick-prev) { transform: translate(-4mm, calc(0.7em + 1mm)); }
+.land-site[data-page="0"] .land-hint > .land-flick:not(.land-flick-prev) { transform: translateX(-4mm); }
 .land-site[data-page="3"] .land-flick-prev { top: 50%; transform: translate(-50%, -50%); }
 
 .land-flick {
