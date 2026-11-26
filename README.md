@@ -1,6 +1,6 @@
 # Habitat / Entity io
 
-Marketing site for Kinetic Information Technology.
+Marketing site for Habitat 1 / Genesis.
 
 ```bash
 npm install
