@@ -209,6 +209,9 @@ export function Landing() {
       skipSnaps: false,
       duration: 18,
       watchDrag: (_, event) => {
+        // Let Embla reset its post-drag click suppression for these native inputs.
+        // Embla ignores input elements for dragging, so the form remains stationary.
+        if (event.target instanceof HTMLInputElement && event.target.closest('.land-ask-seats')) return true;
         if (isField(event.target)) return false;
         const path = typeof event.composedPath === "function" ? event.composedPath() : [];
         if (path.some((node) => node instanceof Element && node.closest(".feat-reel, .feat-grid, .feat-board, .land-spec, .feat-join, .land-ask-form, [data-epic]"))) {

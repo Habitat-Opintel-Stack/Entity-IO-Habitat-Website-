@@ -3132,6 +3132,12 @@ html:not([data-theme="light"]) .land-ask-row > input {
   align-items: baseline;
 }
 
+.land-ask-choice { position: relative; cursor: pointer; }
+.land-ask-choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.land-ask-choice .land-ask-opt { pointer-events: none; }
+.land-ask-choice:hover .land-ask-opt { color: #6226ff; }
+.land-ask-choice input:focus-visible + .land-ask-opt { outline: 2px solid #0055f5; outline-offset: 4px; }
+
 .land-ask-slash {
   margin: 0 0.85rem;
   color: var(--fg-mute);

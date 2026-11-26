@@ -100,19 +100,13 @@ export function WaitlistForm({ tone = "paper" }: { tone?: "paper" | "field" }) {
             {story.paths.map((path, i) => (
               <span key={path.value} className="land-ask-pick-item">
                 {i > 0 ? <span className="land-ask-slash">/</span> : null}
-                <button
-                  type="button"
-                  className="land-ask-opt"
-                  data-on={seat === path.value ? "1" : undefined}
-                  aria-pressed={seat === path.value}
-                  onClick={() => setSeat(path.value)}
-                >
-                  {path.label}
-                </button>
+                <label className="land-ask-choice">
+                  <input type="radio" name="seat" value={path.value} checked={seat === path.value} onChange={() => setSeat(path.value)} />
+                  <span className="land-ask-opt" data-on={seat === path.value ? "1" : undefined}>{path.label}</span>
+                </label>
               </span>
             ))}
           </div>
-          <input type="hidden" name="seat" value={seat} />
         </fieldset>
         <label className="land-ask-row">
           <span className="land-ask-key">Name:</span>
