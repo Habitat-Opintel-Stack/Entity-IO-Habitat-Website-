@@ -3739,9 +3739,10 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 .land-flick-prev {
   position: absolute;
   bottom: calc(100% + 0.5rem);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
 }
+
+.land-site[data-page="3"] .land-flick-prev { transform: translateX(-50%); }
 
 .land-flick {
   display: flex;
