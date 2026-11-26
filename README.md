@@ -1,4 +1,4 @@
-# KIT / Entity io
+# Habitat / Entity io
 
 Marketing site for Kinetic Information Technology.
 
