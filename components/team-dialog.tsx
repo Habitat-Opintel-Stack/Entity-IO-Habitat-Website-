@@ -20,6 +20,7 @@ export function TeamDialog() {
           <button type="button" className="habitat-film-close" onClick={() => dialog.current?.close()} aria-label="Close team window">×</button>
         </div>
         <div className="habitat-film-screen team-dialog-screen">
+          <svg className="habitat-film-logo team-dialog-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M23.5 11 9.5 22v20l14 11M40.5 11l14 11v20l-14 11" /></svg>
           <ul className="team-list">
             {team.map((member) => <li key={member.name}><span>{member.name}</span><span className="team-role">{member.role}</span></li>)}
           </ul>
