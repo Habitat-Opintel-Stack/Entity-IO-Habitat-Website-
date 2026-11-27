@@ -10,6 +10,7 @@ const INBOX = "hello@entityintelligence.io";
 type Payload = {
   name?: string;
   email?: string;
+  phone?: string;
   company?: string;
   seat?: string;
 };
@@ -39,6 +40,7 @@ function fromAddresses() {
 async function sendEnquiry(record: {
   name?: string;
   email?: string;
+  phone?: string;
   company?: string;
   seat?: string;
   receivedAt: string;
@@ -52,7 +54,8 @@ async function sendEnquiry(record: {
   const text = [
     `Name: ${record.name}`,
     `Email: ${record.email}`,
-    `Entity: ${record.company}`,
+    `Phone: ${record.phone || "Not provided"}`,
+    `Business: ${record.company}`,
     `Seat: ${record.seat}`,
     `Received: ${record.receivedAt}`,
   ].join("\n");
@@ -101,6 +104,7 @@ export async function POST(request: Request) {
   const record = {
     name: body.name?.trim(),
     email: body.email?.trim(),
+    phone: body.phone?.trim(),
     company: body.company?.trim(),
     seat: body.seat,
     receivedAt: new Date().toISOString(),

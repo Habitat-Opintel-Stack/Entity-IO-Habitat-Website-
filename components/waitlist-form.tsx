@@ -37,6 +37,7 @@ export function WaitlistForm({ tone = "paper" }: { tone?: "paper" | "field" }) {
     const data = {
       name: (fields.name ?? "").trim() || (fields.email ?? "").split("@")[0] || "Enquire",
       email: (fields.email ?? "").trim(),
+      phone: (fields.phone ?? "").trim(),
       company: (fields.company ?? "").trim(),
       seat,
     };
@@ -117,7 +118,11 @@ export function WaitlistForm({ tone = "paper" }: { tone?: "paper" | "field" }) {
           <input name="email" type="email" required autoComplete="email" />
         </label>
         <label className="land-ask-row">
-          <span className="land-ask-key">Entity:</span>
+          <span className="land-ask-key">Phone:</span>
+          <input name="phone" type="tel" autoComplete="tel" />
+        </label>
+        <label className="land-ask-row">
+          <span className="land-ask-key">Business:</span>
           <input name="company" required autoComplete="organization" />
         </label>
         <button type="submit" disabled={status === "submitting"} className="land-ask-send">
@@ -155,7 +160,11 @@ export function WaitlistForm({ tone = "paper" }: { tone?: "paper" | "field" }) {
         <input name="email" type="email" required autoComplete="email" className={paperField} />
       </label>
       <label className="grid gap-1">
-        <span className="mono text-mute">Company</span>
+        <span className="mono text-mute">Phone (optional)</span>
+        <input name="phone" type="tel" autoComplete="tel" className={paperField} />
+      </label>
+      <label className="grid gap-1">
+        <span className="mono text-mute">Business</span>
         <input name="company" required autoComplete="organization" className={paperField} />
       </label>
       <fieldset className="wait-path" aria-label="Seat">
