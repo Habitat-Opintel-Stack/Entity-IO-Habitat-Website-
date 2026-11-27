@@ -405,6 +405,12 @@ html:not([data-theme="light"]) .head-mark .feat-epic-face {
   gap: 3.15rem;
 }
 
+@media (max-width: 860px) {
+  .land-head .head-rail { gap: 0.75rem; }
+  .land-head .head-bar { flex-wrap: wrap; row-gap: 1rem; }
+  .land-head .head-rail { margin-left: auto; }
+}
+
 .head-sep {
   width: 1px;
   height: 0.7rem;
@@ -5199,6 +5205,15 @@ html .land-plot-stage .land-hero-hold .land-hero-live {
 .habitat-film-screen { border-width: .5px; }
 .habitat-film-logo { width: 2.6rem; height: 2.6rem; fill: none; stroke: #111; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .habitat-film-logo { stroke-width: 3.25; }
+.team-dialog-screen { display: flex; align-items: center; justify-content: center; overflow-y: auto; padding: 3rem; }
+.team-list { width: min(100%, 48rem); list-style: none; margin: auto; padding: 0; font-family: var(--font-plex), "IBM Plex Sans KR", "Helvetica Neue", sans-serif; font-size: var(--type-title); letter-spacing: 0.14em; }
+.team-list li { display: grid; grid-template-columns: minmax(12rem, 1fr) 1.6fr; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid #e0e0de; }
+.team-list li:first-child { border-top: 1px solid #e0e0de; }
+.team-role { color: #898987; }
+@media (max-width: 640px) {
+  .team-dialog-screen { padding: 1.5rem; }
+  .team-list li { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem 0; }
+}
 .habitat-film-pending p { transform: translateY(15mm); }
 /* Keep the third-page board interactive without the black selection mark. */
 .land-site:not(.range-page) .land-plot-hold .feat-epic-mark.is-ink { visibility: hidden; }

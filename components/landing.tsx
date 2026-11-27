@@ -10,6 +10,7 @@ import { EntityField, FieldTiles, useField } from "@/components/entity-field";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { useEffect, useMemo, useRef, useState, type Ref } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { TeamDialog } from "@/components/team-dialog";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 const LAST = 3;
@@ -175,6 +176,8 @@ function LandingHead({
           </Link>
         </div>
         <nav className="head-rail">
+          <TeamDialog />
+          <span className="head-sep" aria-hidden="true" />
           <Link
             href="/?enroll=1"
             className="head-link"
