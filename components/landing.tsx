@@ -73,6 +73,10 @@ function HeroAside({ lines }: { lines: readonly string[] }) {
 function HeroLine({ title, lines }: { title: string; lines: readonly string[] }) {
   return (
     <p className="land-hero-hold">
+      <svg className="land-opening-symbol" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2.5 21 6v6.2c0 4.2-2.7 7.4-9 9.3-6.3-1.9-9-5.1-9-9.3V6L12 2.5Z" />
+        <path d="m8 9 2.5 2.5L8 14m5 1h3" />
+      </svg>
       <span className="land-hero-ghost">
         <span className="land-hero-live">{title}</span>
       </span>
