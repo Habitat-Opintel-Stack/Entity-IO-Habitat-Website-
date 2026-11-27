@@ -5203,6 +5203,7 @@ html .land-plot-stage .land-hero-hold .land-hero-live {
 .habitat-film-screen { background: #fff; border-color: #fff; }
 .habitat-film-screen { border: 1px solid #111; }
 .habitat-film-screen { border-width: .5px; }
+.habitat-film-screen.habitat-film-poster { background: #000 url("/habitat-film-poster.png") center / cover no-repeat; }
 .habitat-film-logo { width: 2.6rem; height: 2.6rem; fill: none; stroke: #111; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .habitat-film-logo { stroke-width: 3.25; }
 .team-dialog-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3rem; overflow-y: auto; padding: 3rem; }
