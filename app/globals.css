@@ -5142,6 +5142,7 @@ html[data-theme="light"] .kit-sys-reading:hover span {
 }
 .land-site[data-page="2"] .land-hero { visibility: hidden; }
 .land-plot-stage .land-hero-ghost { visibility: visible; }
+.land-plot-stage .land-hero-hold > .land-opening-symbol { flex: none; align-self: center; }
 html .land-plot-stage .land-hero-hold .land-hero-live {
   color: #898987;
   -webkit-text-fill-color: #898987;
