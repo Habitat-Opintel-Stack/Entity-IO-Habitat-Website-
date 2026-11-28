@@ -5372,10 +5372,13 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     text-align: left;
   }
   .mobile-menu-toggle {
-    width: calc(2.75rem + 5mm);
+    top: calc(1.2rem + 0.825rem);
+    right: calc(var(--rail-inset) + 2mm);
+    width: calc(2.75rem + 7mm);
+    transform: translateY(-50%);
     align-items: flex-end;
   }
   .mobile-menu-toggle span {
-    width: calc(1.75rem + 5mm);
+    width: calc(1.75rem + 7mm);
   }
 }
