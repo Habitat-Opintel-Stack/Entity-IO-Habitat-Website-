@@ -5525,32 +5525,6 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
   }
 }
 
-.mobile-tile-row { display: none; }
-@media (max-width: 600px) {
-  .land-site:not(.range-page) { --feat-g: 0.4rem; }
-  .land-site:not(.range-page) .feat-grid,
-  .land-site:not(.range-page) .feat-join,
-  .land-site:not(.range-page) .land-spec,
-  .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.4rem; }
-  .land-site:not(.range-page) .mobile-tile-row {
-    position: absolute;
-    top: 4.8rem;
-    left: var(--rail-inset);
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(7, var(--feat-tile));
-    gap: var(--feat-g);
-    pointer-events: none;
-  }
-  .mobile-background-tile {
-    width: var(--feat-tile);
-    height: var(--feat-tile);
-    border-radius: 1.15rem;
-    background: var(--paper);
-    box-shadow: 0.42rem 0.6rem 1.2rem color-mix(in srgb, var(--fg) 8%, transparent), -0.3rem -0.35rem 0.8rem color-mix(in srgb, #fff 82%, transparent), inset 0.14rem 0.18rem 0.48rem color-mix(in srgb, #fff 58%, transparent);
-  }
-}
-
 @media (max-width: 600px), (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) and (pointer: coarse) {
   .mobile-menu-toggle span:first-child {
     position: relative;
@@ -5560,7 +5534,7 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     content: "";
     position: absolute;
     inset: auto 0 0;
-    height: 7px;
-    background: center / 100% 100% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 7' preserveAspectRatio='none'%3E%3Cpath d='M0 6.5H40 C44 6.5 44 1 50 1 C56 1 56 6.5 60 6.5H100' fill='none' stroke='%23111' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    height: 4px;
+    background: center / 100% 100% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 4' preserveAspectRatio='none'%3E%3Cpath d='M0 3.5H30 C39 3.5 39 0.8 50 0.8 C61 0.8 61 3.5 70 3.5H100' fill='none' stroke='%23111' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
   }
 }
