@@ -5544,3 +5544,17 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
   .land-site:not(.range-page) .land-spec,
   .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.25rem; }
 }
+
+@media (max-width: 600px) {
+  .land-site:not(.range-page) {
+    --feat-g: 0.15rem;
+    --feat-tile: min(calc((100vw - 2rem - 6 * var(--feat-g)) / 7), calc((var(--view) - 12rem - 2 * var(--feat-g)) / 3));
+  }
+  .land-site:not(.range-page) .feat-grid,
+  .land-site:not(.range-page) .feat-join,
+  .land-site:not(.range-page) .land-spec,
+  .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.15rem; }
+  .land-site:not(.range-page) .feat-board,
+  .land-site:not(.range-page) .feat-join-open,
+  .land-site:not(.range-page) .land-spec-hold { left: 1rem; }
+}
