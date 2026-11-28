@@ -5524,3 +5524,29 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     text-align: center;
   }
 }
+
+.mobile-tile-row { display: none; }
+@media (max-width: 600px) {
+  .land-site:not(.range-page) { --feat-g: 0.4rem; }
+  .land-site:not(.range-page) .feat-grid,
+  .land-site:not(.range-page) .feat-join,
+  .land-site:not(.range-page) .land-spec,
+  .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.4rem; }
+  .land-site:not(.range-page) .mobile-tile-row {
+    position: absolute;
+    top: 4.8rem;
+    left: var(--rail-inset);
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(7, var(--feat-tile));
+    gap: var(--feat-g);
+    pointer-events: none;
+  }
+  .mobile-background-tile {
+    width: var(--feat-tile);
+    height: var(--feat-tile);
+    border-radius: 1.15rem;
+    background: var(--paper);
+    box-shadow: 0.42rem 0.6rem 1.2rem color-mix(in srgb, var(--fg) 8%, transparent), -0.3rem -0.35rem 0.8rem color-mix(in srgb, #fff 82%, transparent), inset 0.14rem 0.18rem 0.48rem color-mix(in srgb, #fff 58%, transparent);
+  }
+}

@@ -89,6 +89,10 @@ function HeroLine({ title, lines }: { title: string; lines: readonly string[] })
   );
 }
 
+function MobileTileRow() {
+  return <div className="mobile-tile-row" aria-hidden="true">{Array.from({ length: 7 }, (_, i) => <span className="mobile-background-tile" key={i} />)}</div>;
+}
+
 function StoryPage({
   headRef,
   specId,
@@ -98,6 +102,7 @@ function StoryPage({
 }) {
   return (
     <section className="split-stage land land-story">
+      <MobileTileRow />
       <div className="land-story-col">
         <p className="land-story-head land-story-title" ref={headRef}>
           <svg className="land-opening-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4" /><path d="m8 8 3 3-3 3M13 16h4" /></svg><span className="land-hero-live">{story.hero}</span>
@@ -440,12 +445,14 @@ export function Landing() {
       <div className="land-pager" ref={viewportRef}>
         <div className="land-track">
           <section className="split-stage land land-open">
+            <MobileTileRow />
             <FeatureGrid />
             <p className="land-opening-line"><svg className="land-opening-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4" /><path d="m8 8 3 3-3 3M13 16h4" /></svg>See your entire operation, <span>shape what happens next.</span></p>
           </section>
           <StoryPage headRef={slotRef} />
           <PlotPage headRef={slotCopyRef} />
           <section className="split-stage land land-story land-seat-stage">
+            <MobileTileRow />
             <div className="land-story-col">
               <p className="land-story-head" ref={joinSlotRef} aria-hidden="true">
                 <span className="land-hero-live">{story.join}</span>
