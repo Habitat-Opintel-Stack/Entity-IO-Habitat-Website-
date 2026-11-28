@@ -5382,3 +5382,21 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     width: calc(1.75rem + 7mm);
   }
 }
+
+@media (max-width: 600px) {
+  .land-head .head-ident {
+    width: 50vw;
+    margin-left: calc(-1 * var(--rail-inset));
+  }
+  .land-head .head-brand {
+    justify-content: center;
+    padding-left: 0;
+    text-align: center;
+  }
+  .mobile-menu-toggle {
+    left: 75%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    align-items: center;
+  }
+}
