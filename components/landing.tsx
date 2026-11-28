@@ -430,6 +430,7 @@ export function Landing() {
   return (
     <EntityField embla={embla}>
     <div className="split land-site" ref={rootRef} data-page="0">
+      <div className="portrait-notice" role="status">Please turn your phone upright to view the site.</div>
       <span className="land-spine" aria-hidden="true" />
       <LandingHead onHome={() => goRef.current(0)} onJoin={() => goRef.current(LAST)} />
       <svg className="land-opening-symbol land-travel-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4" /><path d="m8 8 3 3-3 3M13 16h4" /></svg>
