@@ -178,7 +178,6 @@ function LandingHead({
         </div>
         <button type="button" className="mobile-menu-toggle" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} aria-controls="landing-navigation" onClick={() => setMenuOpen((open) => !open)}><span /><span /></button>
         <nav id="landing-navigation" className="head-rail" data-mobile-open={menuOpen ? "1" : "0"} aria-label="Main navigation">
-          <span className="mobile-menu-heading">Operational Intelligence</span>
           <TeamDialog />
           <span className="head-sep" aria-hidden="true" />
           <Link
