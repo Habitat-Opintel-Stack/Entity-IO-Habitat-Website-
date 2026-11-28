@@ -224,8 +224,8 @@ export function Landing() {
         // Embla ignores input elements for dragging, so the form remains stationary.
         if (event.target instanceof HTMLInputElement && event.target.closest('.land-ask-seats')) return true;
         if (isField(event.target)) return false;
-        if (event.type === "touchstart" && window.matchMedia("(max-width: 600px)").matches && (event.target as Element | null)?.closest(".land-seat-stage .land-story-col, .land-story:not(.land-plot-stage):not(.land-seat-stage)")) return false;
-        if (event.type === "touchstart" && window.matchMedia("(max-width: 600px)").matches && !(event.target as Element | null)?.closest(".land-ask-form, button, a")) return true;
+        if (event.type === "touchstart" && window.matchMedia("(max-width: 600px), (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) and (pointer: coarse)").matches && (event.target as Element | null)?.closest(".land-seat-stage .land-story-col, .land-story:not(.land-plot-stage):not(.land-seat-stage)")) return false;
+        if (event.type === "touchstart" && window.matchMedia("(max-width: 600px), (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) and (pointer: coarse)").matches && !(event.target as Element | null)?.closest(".land-ask-form, button, a")) return true;
         const path = typeof event.composedPath === "function" ? event.composedPath() : [];
         if (path.some((node) => node instanceof Element && node.closest(".feat-reel, .feat-grid, .feat-board, .land-spec, .feat-join, .land-ask-form, [data-epic]"))) {
           return false;
@@ -403,7 +403,7 @@ export function Landing() {
     if (!root || !embla) return;
     let start: { x: number; y: number; page: number; atTop: boolean; atBottom: boolean } | null = null;
     const onTouchStart = (event: TouchEvent) => {
-      if (!window.matchMedia("(max-width: 600px)").matches || event.touches.length !== 1) return;
+      if (!window.matchMedia("(max-width: 600px), (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) and (pointer: coarse)").matches || event.touches.length !== 1) return;
       const target = event.target as Element | null;
       if (target?.closest("input, textarea, select, button, a, dialog, .land-head")) return;
       const page = Number(root.dataset.page ?? 0);
