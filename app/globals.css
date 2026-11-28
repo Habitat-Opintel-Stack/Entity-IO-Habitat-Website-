@@ -5450,3 +5450,25 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     transform: translateY(-0.08rem);
   }
 }
+
+@media (max-width: 600px) {
+  .land-site:not(.range-page) .split-stage.land.land-seat-stage {
+    padding-left: 0;
+  }
+  .land-site:not(.range-page) .land-seat-stage .land-story-col {
+    width: calc(100% - 2.5rem);
+    margin-inline: auto;
+  }
+  .land-site:not(.range-page) .land-seat-stage .land-story-copy {
+    box-sizing: border-box;
+    padding-inline: 5mm;
+  }
+  .land-site:not(.range-page) .land-seat-stage .land-mid,
+  .land-site:not(.range-page) .land-seat-stage .land-mid > span {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    text-align: justify;
+    text-align-last: left;
+  }
+}
