@@ -18,7 +18,7 @@ export function HabitatFilm({ children, className }: { children: ReactNode; clas
     <button type="button" className={className} onClick={() => dialog.current?.showModal()} aria-haspopup="dialog">{children}</button>
     <dialog ref={dialog} className="habitat-film" aria-labelledby="habitat-film-title" onClose={() => video.current?.pause()}>
       <div className="habitat-film-bar"><span id="habitat-film-title">Habitat / Product film</span><button type="button" className="habitat-film-close" onClick={close} aria-label="Close product film">×</button></div>
-      {filmUrl ? <video ref={video} className="habitat-film-screen" poster="/habitat-film-poster.png" controls playsInline preload="metadata"><source src={filmUrl} type="video/mp4" />{captionsUrl && <track kind="captions" src={captionsUrl} srcLang="en" label="English" default />}Your browser does not support video playback.</video> : <div className="habitat-film-screen habitat-film-poster" role="img" aria-label="Luminous glass platform" />}
+      {filmUrl ? <video ref={video} className="habitat-film-screen" controls playsInline preload="metadata"><source src={filmUrl} type="video/mp4" />{captionsUrl && <track kind="captions" src={captionsUrl} srcLang="en" label="English" default />}Your browser does not support video playback.</video> : <div className="habitat-film-screen habitat-film-pending"><svg className="habitat-film-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M23.5 11 9.5 22v20l14 11M40.5 11l14 11v20l-14 11" /></svg><p>Product film coming soon.</p></div>}
     </dialog>
   </>;
 }
