@@ -5364,3 +5364,18 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     height: 1.32rem;
   }
 }
+
+@media (max-width: 600px) {
+  .land-head .head-brand {
+    justify-content: flex-start;
+    padding-left: calc(1.2em + 1em + 4mm);
+    text-align: left;
+  }
+  .mobile-menu-toggle {
+    width: calc(2.75rem + 5mm);
+    align-items: flex-end;
+  }
+  .mobile-menu-toggle span {
+    width: calc(1.75rem + 5mm);
+  }
+}
