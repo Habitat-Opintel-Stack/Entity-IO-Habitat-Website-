@@ -5349,3 +5349,19 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 600px) {
+  .land-opening-line,
+  .land-site:not(.range-page) .land-plot-stage .land-hero-hold {
+    left: 1.25rem;
+    right: 1.25rem;
+    grid-template-columns: 1.32rem minmax(0, 1fr);
+    column-gap: calc(1.1rem + 4mm);
+    justify-content: start;
+  }
+  .land-opening-line > .land-opening-symbol,
+  .land-plot-stage .land-hero-hold > .land-opening-symbol {
+    width: 1.32rem;
+    height: 1.32rem;
+  }
+}
