@@ -5308,4 +5308,9 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
   .land-head .head-rail .head-link { font-size: 0.9rem; color: #333; }
   .land-opening-line { right: 1.5rem; font-size: 1.1rem; line-height: 1.55; letter-spacing: 0.08em; }
   .land-site:not(.range-page) .land-plot-stage .land-hero-hold { right: 1.5rem; }
+  .land-head .head-ident { width: calc(100% - 3.25rem); }
+  .land-head .head-brand { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; padding: 0; font-size: 1.1rem; line-height: 1.5; letter-spacing: 0.08em; color: #111; text-align: center; white-space: normal; }
+  .land-head .head-brand-divider { margin: 0 0.5em; }
+  .land-head .head-brand-extension { white-space: normal; }
+  .land-story .land-core-kicker { font-size: 0.82rem; letter-spacing: 0.08em; line-height: 1.6; white-space: normal; text-align: left; }
 }
