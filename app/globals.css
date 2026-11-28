@@ -5210,6 +5210,29 @@ html .land-plot-stage .land-hero-hold .land-hero-live {
 .team-dialog-logo { flex: none; }
 .team-list { width: min(100%, 48rem); list-style: none; margin: 0; padding: 0; font-family: var(--font-plex), "IBM Plex Sans KR", "Helvetica Neue", sans-serif; font-size: var(--type-title); letter-spacing: 0.14em; }
 .team-list { transform: translateY(15mm); }
+.mobile-menu-toggle { display: none; }
+
+@media (max-width: 600px) {
+  .land-head .head-bar { position: relative; }
+  .land-head .head-brand { padding-right: 3rem; }
+  .mobile-menu-toggle { position: absolute; top: 1rem; right: var(--rail-inset); display: flex; width: 2.75rem; height: 2.75rem; padding: 0.65rem 0.4rem; flex-direction: column; justify-content: center; gap: 0.4rem; border: 0; cursor: pointer; }
+  .mobile-menu-toggle span { display: block; width: 1.75rem; height: 1px; background: #111; }
+  .land-head .head-rail { display: none; position: absolute; top: 4.4rem; left: var(--rail-inset); right: var(--rail-inset); z-index: 10; margin: 0; padding: 1.25rem; gap: 1.3rem; grid-template-columns: 1fr; background: #fff; border: 1px solid #dededc; border-radius: 0.9rem; box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.08); }
+  .land-head .head-rail[data-mobile-open="1"] { display: grid; }
+  .land-head .head-rail .head-link { font-size: 0.9rem; color: #333; }
+  .land-head .head-sep { display: none; }
+  .land-head .head-place { display: none; }
+  .land-hint { display: none; }
+  .land-opening-line { right: 1.5rem; font-size: 1.1rem; line-height: 1.55; letter-spacing: 0.08em; }
+  .land-story-title { font-size: 1.1rem; letter-spacing: 0.08em; }
+  .land-site[data-page="3"] .land-hero { font-size: 1.05rem; letter-spacing: 0.08em; }
+  .land-site:not(.range-page) .land-plot-stage .land-hero-hold { right: 1.5rem; display: grid; grid-template-columns: 1.2em minmax(0, 1fr); column-gap: 1rem; row-gap: 0.55rem; align-items: center; font-size: 1.05rem; letter-spacing: 0.08em; }
+  .land-plot-stage .land-hero-hold > .land-opening-symbol { width: 1.2em; height: 1.2em; margin: 0; }
+  .land-plot-stage .land-hero-ghost { min-width: 0; }
+  .land-plot-stage .land-hero-slash { display: none !important; }
+  .land-plot-stage .land-hero-aside { grid-column: 2; min-width: 0; }
+  .team-dialog-screen { min-height: min(28rem, calc(100dvh - 8rem)); height: auto; }
+}
 
 /* Phone layout: keep the desktop composition intact at wider sizes. */
 @media (max-width: 600px) {
@@ -5278,4 +5301,11 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
   background: linear-gradient(155deg, color-mix(in srgb, #fff 22%, transparent), transparent 48%), #0055f5;
   color: #fff;
   box-shadow: 0.32rem 0.5rem 1.2rem color-mix(in srgb, #0055f5 28%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent);
+}
+@media (max-width: 600px) {
+  .land-head .head-rail[data-mobile-open="0"] { display: none; }
+  .land-head .head-rail[data-mobile-open="1"] { display: grid; grid-template-columns: 1fr; gap: 1.3rem; margin: 0; }
+  .land-head .head-rail .head-link { font-size: 0.9rem; color: #333; }
+  .land-opening-line { right: 1.5rem; font-size: 1.1rem; line-height: 1.55; letter-spacing: 0.08em; }
+  .land-site:not(.range-page) .land-plot-stage .land-hero-hold { right: 1.5rem; }
 }

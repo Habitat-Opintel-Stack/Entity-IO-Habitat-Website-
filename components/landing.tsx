@@ -147,6 +147,7 @@ function LandingHead({
   onJoin: () => void;
 }) {
   const { offer, kitOn, holdKit, returnOffer } = useField();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header className="land-head">
       <div className="head-bar">
@@ -175,7 +176,8 @@ function LandingHead({
             Entity Io<span className="head-brand-divider" aria-hidden="true">\</span><span className="head-brand-extension">Operational Intelligence</span>
           </Link>
         </div>
-        <nav className="head-rail">
+        <button type="button" className="mobile-menu-toggle" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} aria-controls="landing-navigation" onClick={() => setMenuOpen((open) => !open)}><span /><span /></button>
+        <nav id="landing-navigation" className="head-rail" data-mobile-open={menuOpen ? "1" : "0"} aria-label="Main navigation">
           <TeamDialog />
           <span className="head-sep" aria-hidden="true" />
           <Link
@@ -183,6 +185,7 @@ function LandingHead({
             className="head-link"
             onClick={(event) => {
               event.preventDefault();
+              setMenuOpen(false);
               onJoin();
             }}
           >
@@ -220,6 +223,8 @@ export function Landing() {
         // Embla ignores input elements for dragging, so the form remains stationary.
         if (event.target instanceof HTMLInputElement && event.target.closest('.land-ask-seats')) return true;
         if (isField(event.target)) return false;
+        if (event.type === "touchstart" && window.matchMedia("(max-width: 600px)").matches && (event.target as Element | null)?.closest(".land-seat-stage .land-story-col, .land-story:not(.land-plot-stage):not(.land-seat-stage)")) return false;
+        if (event.type === "touchstart" && window.matchMedia("(max-width: 600px)").matches && !(event.target as Element | null)?.closest(".land-ask-form, button, a")) return true;
         const path = typeof event.composedPath === "function" ? event.composedPath() : [];
         if (path.some((node) => node instanceof Element && node.closest(".feat-reel, .feat-grid, .feat-board, .land-spec, .feat-join, .land-ask-form, [data-epic]"))) {
           return false;
@@ -390,6 +395,36 @@ export function Landing() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", place);
     };
+  }, [embla]);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || !embla) return;
+    let start: { x: number; y: number; page: number; atTop: boolean; atBottom: boolean } | null = null;
+    const onTouchStart = (event: TouchEvent) => {
+      if (!window.matchMedia("(max-width: 600px)").matches || event.touches.length !== 1) return;
+      const target = event.target as Element | null;
+      if (target?.closest("input, textarea, select, button, a, dialog, .land-head")) return;
+      const page = Number(root.dataset.page ?? 0);
+      const scroll = target?.closest<HTMLElement>(".land-seat-stage .land-story-col, .land-story:not(.land-plot-stage):not(.land-seat-stage)") ?? null;
+      if (!scroll && page !== LAST) return;
+      start = { x: event.touches[0].clientX, y: event.touches[0].clientY, page, atTop: !scroll || scroll.scrollTop <= 1, atBottom: !scroll || scroll.scrollTop + scroll.clientHeight >= scroll.scrollHeight - 1 };
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      if (!start || !event.changedTouches.length) return;
+      const dx = event.changedTouches[0].clientX - start.x;
+      const dy = event.changedTouches[0].clientY - start.y;
+      if (root.dataset.page === String(start.page) && Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx) * 1.25) {
+        if (dy > 0 && start.atTop) goRef.current(start.page - 1);
+        else if (dy < 0 && start.atBottom) goRef.current(start.page === LAST ? LAST - 1 : start.page + 1);
+      }
+      start = null;
+    };
+    const cancel = () => { start = null; };
+    root.addEventListener("touchstart", onTouchStart, { passive: true });
+    root.addEventListener("touchend", onTouchEnd, { passive: true });
+    root.addEventListener("touchcancel", cancel);
+    return () => { root.removeEventListener("touchstart", onTouchStart); root.removeEventListener("touchend", onTouchEnd); root.removeEventListener("touchcancel", cancel); };
   }, [embla]);
 
   return (

@@ -1127,7 +1127,7 @@ export function FieldTiles({
       data-dock={carouselSeat && boardOut ? "1" : undefined}
       data-recall={recalling ? "1" : undefined}
       onMouseDown={(event) => event.stopPropagation()}
-      onTouchStart={(event) => event.stopPropagation()}
+      onTouchStart={(event) => { if (!window.matchMedia("(max-width: 600px)").matches) event.stopPropagation(); }}
       onPointerDown={(event) => event.stopPropagation()}
       onPointerLeave={() => setFore(null)}
       onKeyDown={(event) => {
