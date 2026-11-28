@@ -5424,3 +5424,29 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     left: calc(1.25rem + 5mm);
   }
 }
+
+@media (max-width: 600px) {
+  .land-site:not(.range-page) .land-story:not(.land-plot-stage):not(.land-seat-stage) .land-core-kicker {
+    justify-content: space-between;
+    gap: 1.15rem;
+    border-radius: 1.15rem;
+    background: linear-gradient(155deg, color-mix(in srgb, #fff 16%, transparent), transparent 48%), #161616;
+    color: #f4f1ea;
+    padding: 1.05rem 1.2rem 1.05rem 1.35rem;
+    box-shadow: 0.28rem 0.42rem 1.05rem color-mix(in srgb, #000 18%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 14%, transparent);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  }
+  .land-site:not(.range-page) .land-story .land-core-kicker .land-hero-live {
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+  }
+  .land-site:not(.range-page) .land-story .land-core-kicker:hover {
+    background: linear-gradient(155deg, color-mix(in srgb, #fff 22%, transparent), transparent 48%), #0055f5;
+    color: #fff;
+    box-shadow: 0.32rem 0.5rem 1.2rem color-mix(in srgb, #0055f5 28%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent);
+    transform: translateY(-0.08rem);
+  }
+}
