@@ -5536,3 +5536,11 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     pointer-events: none;
   }
 }
+
+@media (max-width: 600px) {
+  .land-site:not(.range-page) { --feat-g: 0.25rem; }
+  .land-site:not(.range-page) .feat-grid,
+  .land-site:not(.range-page) .feat-join,
+  .land-site:not(.range-page) .land-spec,
+  .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.25rem; }
+}
