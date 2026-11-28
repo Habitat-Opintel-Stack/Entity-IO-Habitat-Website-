@@ -5407,3 +5407,10 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     padding-inline: 5mm;
   }
 }
+
+@media (max-width: 600px) {
+  .land-site:not(.range-page) .land-story:not(.land-plot-stage):not(.land-seat-stage) .land-core-kicker {
+    margin-left: 5mm;
+    max-width: calc(100% - 10mm);
+  }
+}
