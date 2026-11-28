@@ -5324,6 +5324,9 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 }
 
 @media (max-width: 600px) {
+  .land-site:not(.range-page) .split-stage.land.land-story:not(.land-plot-stage):not(.land-seat-stage) {
+    padding-left: 0;
+  }
   .land-site:not(.range-page) .land-story:not(.land-plot-stage):not(.land-seat-stage) .land-story-col {
     width: calc(100% - 2.5rem);
     margin-inline: auto;
