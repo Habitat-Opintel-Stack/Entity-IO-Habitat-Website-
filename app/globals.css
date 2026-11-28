@@ -5495,3 +5495,13 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     margin-top: calc(1.5rem + 10mm);
   }
 }
+
+@media (max-width: 600px), (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) and (pointer: coarse) {
+  .land-head { z-index: 50; }
+  .land-head .head-rail[data-mobile-open="1"] {
+    background: #fff;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .land-head .head-rail .head-stack { display: none; }
+}
