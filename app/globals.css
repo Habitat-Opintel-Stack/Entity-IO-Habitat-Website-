@@ -5414,3 +5414,13 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
     max-width: calc(100% - 10mm);
   }
 }
+
+@media (max-width: 600px) {
+  .land-site:not(.range-page) .land-story-title {
+    margin-left: 5mm;
+  }
+  .land-opening-line,
+  .land-site:not(.range-page) .land-plot-stage .land-hero-hold {
+    left: calc(1.25rem + 5mm);
+  }
+}
