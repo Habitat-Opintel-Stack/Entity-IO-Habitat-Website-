@@ -279,9 +279,10 @@ export function EntityField({
     if (page !== 0 || pageLock != null || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const home = { c: 3, r: 1 };
     const positions = [{ c: 0, r: 0 }, { c: 6, r: 0 }, { c: 0, r: 2 }, { c: 6, r: 2 }, { c: 1, r: 1 }, { c: 5, r: 1 }, { c: 2, r: 0 }, { c: 4, r: 2 }];
+    const visiblePositions = window.matchMedia("(max-width: 600px)").matches ? positions.filter(({ c }) => c > 0 && c < 6) : positions;
     let index = 0;
     const shuffle = () => {
-      const shuffled = [...positions];
+      const shuffled = [...visiblePositions];
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];

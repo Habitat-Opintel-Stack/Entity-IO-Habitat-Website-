@@ -5547,14 +5547,15 @@ html:not([data-theme="light"]) .land-ask-send:hover:not(:disabled) {
 
 @media (max-width: 600px) {
   .land-site:not(.range-page) {
-    --feat-g: 0.1rem;
-    --feat-tile: min(calc((100vw - 0.5rem - 6 * var(--feat-g)) / 7), calc((var(--view) - 12rem - 2 * var(--feat-g)) / 3));
+    --feat-g: 0.35rem;
+    --feat-tile: min(calc((100vw - 1.5rem - 4 * var(--feat-g)) / 5), calc((var(--view) - 12rem - 2 * var(--feat-g)) / 3));
   }
   .land-site:not(.range-page) .feat-grid,
   .land-site:not(.range-page) .feat-join,
   .land-site:not(.range-page) .land-spec,
-  .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.1rem; }
+  .land-site:not(.range-page) .land-spec-hold { --feat-g: 0.35rem; }
   .land-site:not(.range-page) .feat-board,
   .land-site:not(.range-page) .feat-join-open,
-  .land-site:not(.range-page) .land-spec-hold { left: 0.25rem; }
+  .land-site:not(.range-page) .land-spec-hold { left: calc(50% - var(--feat-board) / 2); }
+  .land-site:not(.range-page) :is(.feat-grid, .feat-join, .land-spec) .feat-tile:is([data-col="0"], [data-col="6"]) { visibility: hidden; pointer-events: none; }
 }
