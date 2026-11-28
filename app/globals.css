@@ -5210,6 +5210,42 @@ html .land-plot-stage .land-hero-hold .land-hero-live {
 .team-dialog-logo { flex: none; }
 .team-list { width: min(100%, 48rem); list-style: none; margin: 0; padding: 0; font-family: var(--font-plex), "IBM Plex Sans KR", "Helvetica Neue", sans-serif; font-size: var(--type-title); letter-spacing: 0.14em; }
 .team-list { transform: translateY(15mm); }
+
+/* Phone layout: keep the desktop composition intact at wider sizes. */
+@media (max-width: 600px) {
+  .land-site { --rail-inset: 1.25rem; --spine: 0.7rem; }
+  .land-head .head-bar { display: block; padding: 1.2rem var(--rail-inset) 0; }
+  .land-head .head-ident { display: block; }
+  .land-head .head-brand { display: inline-flex; align-items: baseline; font-size: 0.72rem; letter-spacing: 0.1em; }
+  .land-head .head-brand-divider { position: static; margin: 0 0.7em; transform: none; }
+  .land-head .head-brand-extension { position: static; transform: none; }
+  .land-head .head-rail { display: grid; grid-template-columns: max-content max-content; justify-content: start; gap: 0.75rem 1.5rem; margin: 1rem 0 0; }
+  .land-head .head-link { font-size: 0.72rem; letter-spacing: 0.08em; text-align: left; }
+  .land-head .head-link, .land-head .head-globe { color: #686866; }
+  .land-head .head-sep { display: none; }
+  .land-opening-line { left: var(--rail-inset); right: 3.75rem; top: auto; bottom: 13%; max-width: none; transform: none; white-space: normal; font-size: 0.8rem; line-height: 1.6; }
+  .land-opening-line { background-image: linear-gradient(100deg, #70706e 0%, #70706e 30%, #aaa 50%, #70706e 70%, #70706e 100%); }
+  .land-opening-symbol { margin-right: 1em; }
+  .land-hint { position: fixed; right: 1.75rem; top: auto; bottom: max(2.25rem, env(safe-area-inset-bottom)); transform: none; z-index: 8; }
+  .land-story-col { width: calc(100% - 2.5rem); }
+  .land-story-copy { width: 100%; max-width: 100%; }
+  .land-story-head { white-space: normal; }
+  .land-story-title { line-height: 1.5; }
+  .split-stage.land.land-story:not(.land-plot-stage):not(.land-seat-stage) { padding-top: 9rem; padding-bottom: 7rem; overflow-y: auto; overscroll-behavior: contain; }
+  .land-story:not(.land-plot-stage):not(.land-seat-stage) .land-spec-hold { visibility: hidden; }
+  .land-story .land-mid { max-width: 100%; font-size: 0.82rem; letter-spacing: 0.08em; line-height: 1.6; }
+  .land-site:not(.range-page) .land-plot-stage .land-hero-hold { left: var(--rail-inset); right: 4rem; top: auto; bottom: 13%; max-width: none; transform: none; flex-wrap: wrap; white-space: normal; row-gap: 0.5rem; }
+  .land-plot-stage .land-hero-slash { margin: 0 0.7em; }
+  .land-seat-stage .land-story-col { width: calc(100% - 2.5rem); max-width: none; padding-top: 8.5rem; padding-bottom: 7rem; overflow-y: auto; overscroll-behavior: contain; }
+  .land-seat-stage .land-mid::after { display: none; }
+  .land-seat-stage .land-ask-form { margin-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); }
+  .land-seat-stage .land-ask-form { font-size: 0.8rem; letter-spacing: 0.1em; }
+  .land-seat-stage .land-ask-send { margin-top: 1.5rem; }
+  .land-seat-stage .land-ask-hold { visibility: hidden; }
+  .land-ask-row { padding: 0.65rem 0; }
+  .habitat-film { width: calc(100vw - 1.5rem); }
+  .team-dialog-screen { justify-content: safe center; }
+}
 .team-list li { display: grid; grid-template-columns: minmax(12rem, 1fr) 1.6fr; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid #e0e0de; }
 .team-list li:first-child { border-top: 1px solid #e0e0de; }
 .team-role { color: #898987; }
