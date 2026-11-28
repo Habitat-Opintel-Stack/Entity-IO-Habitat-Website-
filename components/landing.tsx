@@ -441,7 +441,7 @@ export function Landing() {
         <div className="land-track">
           <section className="split-stage land land-open">
             <FeatureGrid />
-            <p className="land-opening-line"><svg className="land-opening-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4" /><path d="m8 8 3 3-3 3M13 16h4" /></svg>See your entire operation<span className="land-opening-dash">⸺</span><span>shape what happens next</span></p>
+            <p className="land-opening-line"><svg className="land-opening-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4" /><path d="m8 8 3 3-3 3M13 16h4" /></svg>See your entire operation, <span>shape what happens next.</span></p>
           </section>
           <StoryPage headRef={slotRef} />
           <PlotPage headRef={slotCopyRef} />
